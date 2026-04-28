@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<style>
+
+  body {
+  background: #0f172a;
+  transition: background 0.4s ease;
+}
+
+  body {
+  background: #0f172a; /* deep blue-gray */
+}
+#img3 {
+  transition: transform 0.5s ease;
+}
+
+#img3:hover {
+  transform: rotate(360deg);
+}
+
+/* 🔥 ARROW ICON (ICON 5) */
+.arrow-icon {
+  position: relative;
+  width: 100%
+  height: 100%
+  overflow: hidden;
+  display: inline-block;
+}
+
+/* SLIDE LAYER */
+.arrow-slide {
+  position: absolute;
+  left: 20px;
+  transition: transform 0.6s ease;
+}
+
+/* SPIN LAYER */
+.arrow-spin {
+  width: 300px;
+  transition: transform 0.4s ease;
+}
+
+/* positions */
+.red-slide { top: -20px; }
+.blue-slide { top: 10px; }
+
+/* 🔥 HOVER ON */
+.arrow-icon:hover .arrow-spin {
+  transform: rotate(360deg);
+}
+
+.arrow-icon:hover .red-slide {
+  transform: translateX(-400px);
+  transition-delay: 0.2s;   /* slide AFTER spin */
+}
+
+.arrow-icon:hover .blue-slide {
+  transform: translateX(450px);
+  transition-delay: 0.2s;
+}
+
+/* 🔥 HOVER OFF (reverse timing) */
+.arrow-slide {
+  transition-delay: 0s;     /* slide back immediately */
+}
+
+.arrow-spin {
+  transition-delay: 0.2s;   /* unspin AFTER slide back */
+}
+
+.fade-icon {
+  position: relative;
+  width: 200px;
+  height: auto;
+  display: inline-block;
+}
+
+.icon {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  transition: opacity 0.6s ease;
+}
+
+/* start state */
+.normal {
+  opacity: 1;
+}
+
+.hover {
+  opacity: 0;
+}
+
+/* hover state */
+.fade-icon:hover .normal {
+  opacity: 0;
+}
+
+.fade-icon:hover .hover {
+  opacity: 1;
+}
+
+.star-icon {
+  position: relative;
+  width: 260px;
+  height: 280px;
+  display: inline-block;
+  vertical-align: middle;
+  overflow: visible;
+}
+
+.star-icon {
+  position: relative;
+  width: 100%;
+  height: 100%; /* 🔥 increased so bottom isn't cut */
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden; /* keep animation clean */
+}
+
+/* KEEP YOUR EXACT POSITIONS */
+.star-part {
+  position: absolute;
+  transition: transform 0.6s ease, opacity 0.4s ease;
+}
+
+/* left red piece */
+.red-star {
+  width: 50px;
+  left: -31px;
+  top: 25px;
+  z-index: 1;
+}
+
+/* right purple piece */
+.purple-star {
+  width: 170px;
+  left: 55px;
+  top: 26px;
+  z-index: 2;
+}
+
+/* purple oval */
+.purple-ring {
+  width: 170px;
+  left: 15px;
+  top: -50px;
+  z-index: 3;
+}
+
+/* white oval */
+.white-ring {
+  width: 170px;
+  left: 15px;
+  top: -50px;
+  z-index: 4;
+}
+
+/* NEW HOVER ICON */
+.star-hover {
+  position: absolute;
+  width: 170px;
+  left: 0px;
+  top: 10px;
+  opacity: 0;
+  z-index: 0;
+  transition: opacity 0.5s ease;
+}
+
+/* 🔥 HOVER ANIMATION */
+
+/* split star */
+.star-icon:hover .red-star {
+  transform: translateX(-300px);
+}
+
+.star-icon:hover .purple-star {
+  transform: translateX(300px);
+}
+
+/* halo goes up */
+.star-icon:hover .purple-ring,
+.star-icon:hover .white-ring {
+  transform: translateY(-150px);
+}
+
+/* reveal new icon */
+.star-icon:hover .star-hover {
+  opacity: 1;
+}
+
+.fade-icon {
+  position: relative;
+  width: 200px;
+  display: inline-block;
+}
+
+.icon {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  transition: opacity 0.6s ease;
+}
+
+.normal {
+  opacity: 1;
+}
+
+.hover {
+  opacity: 0;
+}
+
+.fade-icon:hover .normal {
+  opacity: 0;
+}
+
+.fade-icon:hover .hover {
+  opacity: 1;
+}
+
+.icon-container {
+  display: grid;
+  grid-template-columns: repeat(3, 150px);
+  grid-template-rows: repeat(3, 150px);
+  gap: 30px;
+
+  justify-content: center;
+  align-content: center;
+  height: 100vh;
+}
+
+/* EVERY grid cell */
+.icon-container > * {
+  width: 150px;
+  height: 150px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  position: relative;
+  overflow: hidden; /* 🔥 prevents spilling */
+}
+
+.icon-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+
+
+</style>
+</head>
+
+<body>
+
+
+<!-- IMAGES -->
+ <div class="icon-container">
+<img id="img" src="https://github.com/abervanakis-tech/cam-1/blob/main/cam.png?raw=true" width="">
+<img id="img2" src="https://raw.githubusercontent.com/s4255467-lang/Search-1/main/ChatGPT%20Image%20Apr%2027%2C%202026%2C%2007_42_52%20PM.png" width="">
+<img id="img3" src="https://raw.githubusercontent.com/s4255467-lang/Reload/main/ChatGPT%20Image%20Apr%2027%2C%202026%2C%2008_59_51%20PM.png" width="">
+<img id="img4" src="https://raw.githubusercontent.com/s4255467-lang/Help-norm/main/ChatGPT%20Image%20Apr%2027%2C%202026%2C%2008_41_55%20PM.png" width="">
+
+<!-- 🔥 ICON 5 (ARROW ANIMATION) -->
+<div class="arrow-icon" id="img5">
+  <div class="arrow-slide red-slide">
+    <img class="arrow-spin red" src="https://github.com/s4255467-lang/Arrow/blob/main/ChatGPT%20Image%20Apr%2028%2C%202026%2C%2010_30_52%20AM.png?raw=true">
+  </div>
+
+  <div class="arrow-slide blue-slide">
+    <img class="arrow-spin blue" src="https://github.com/s4255467-lang/Arrow/blob/main/ChatGPT%20Image%20Apr%2028%2C%202026%2C%2010_32_28%20AM.png?raw=true">
+  </div>
+</div>
+
+<div class="fade-icon" id="img6">
+  <img class="icon normal" src="https://github.com/abervanakis-tech/Side-Bar/blob/main/sidebar.png?raw=true">
+  <img class="icon hover" src="https://github.com/abervanakis-tech/Side-Bar/blob/main/SideBar%20hover.png?raw=true">
+</div>
+<div class="star-icon" id="img7">
+  <img class="star-part red-star" src="https://github.com/abervanakis-tech/Star/blob/main/red%20star.png?raw=true">
+  <img class="star-part purple-star" src="https://github.com/abervanakis-tech/Star/blob/main/purple%20star.png?raw=true">
+  <img class="star-part purple-ring" src="https://github.com/abervanakis-tech/Star/blob/main/halo%201.png?raw=true">
+  <img class="star-part white-ring" src="https://github.com/abervanakis-tech/Star/blob/main/halo%20white.png?raw=true">
+    <img class="star-hover" src="https://github.com/abervanakis-tech/Star/blob/main/star%20hover.png?raw=true">
+</div>
+<div class="fade-icon" id="img8">
+  <img class="icon normal" src="https://github.com/s4255467-lang/house/blob/main/house%202.png?raw=true">
+  <img class="icon hover" src="https://github.com/s4255467-lang/house/blob/main/house%201.png?raw=true">
+</div>
+<div class="fade-icon" id="img9">
+  <img class="icon normal" src="https://github.com/s4255467-lang/envelope/blob/main/envelope%201.png?raw=true">
+  <img class="icon hover" src="https://github.com/s4255467-lang/envelope/blob/main/envelope%202.png?raw=true">
+</div>
+
+<!-- SOUNDS -->
+<audio id="sound1">
+  <source src="https://raw.githubusercontent.com/s4255467-lang/screenshot-sfx/main/iphonescreenshot.mp3" type="audio/mpeg"></audio>
+<audio id="sound2">
+  <source src="https://raw.githubusercontent.com/s4255467-lang/screenshot-audio/main/search.wav" type="audio/wav"></audio>
+
+<audio id="sound3a">
+  <source src="https://raw.githubusercontent.com/s4255467-lang/swoosh-1/main/swwosh%201.wav" type="audio/wav">
+
+<audio id="sound3b">
+  <source src="https://raw.githubusercontent.com/s4255467-lang/swoosh-1/main/swwoosh%202.wav" type="audio/wav">
+
+<audio id="sound4">
+  <source src="https://github.com/s4255467-lang/Help-mp3/blob/main/help%201.wav?raw=true" type="audio/wav">
+</audio>
+
+<audio id="sound5">
+  <source src="https://github.com/abervanakis-tech/audio/blob/main/two%20arrows.mp3?raw=true"></audio>
+<audio id="sound6">
+  <source src="https://github.com/abervanakis-tech/audio/blob/main/soundreality-pop-423717.mp3?raw=true"></audio>
+<audio id="sound7">
+  <source src="https://github.com/abervanakis-tech/audio/blob/main/star%20wav.wav?raw=true"></audio>
+<audio id="sound8">
+  <source src="https://github.com/abervanakis-tech/audio/blob/main/house%20wav.wav?raw=true"></audio>
+<audio id="sound9">
+  <source src="https://raw.githubusercontent.com/abervanakis-tech/audio/main/envelope%20wav.wav" type="audio/wav">
+</audio>
+
+<script>
+const img = document.getElementById("img");
+const img2 = document.getElementById("img2");
+const img3 = document.getElementById("img3");
+const img4 = document.getElementById("img4");
+const img5 = document.getElementById("img5");
+const img6 = document.getElementById("img6");
+const img7 = document.getElementById("img7");
+const img8 = document.getElementById("img8");
+const img9 = document.getElementById("img9");
+
+const sound1 = document.getElementById("sound1");
+const sound2 = document.getElementById("sound2");
+const sound4 = document.getElementById("sound4");
+
+const randomSounds3 = [
+  document.getElementById("sound3a"),
+  document.getElementById("sound3b")
+];
+
+const sound5 = document.getElementById("sound5");
+const sound6 = document.getElementById("sound6");
+const sound7 = document.getElementById("sound7");
+const sound8 = document.getElementById("sound8");
+const sound9 = document.getElementById("sound9");
+
+// SOURCES
+const normalSrc = img.src;
+const hoverSrc = "https://raw.githubusercontent.com/s4255467-lang/screenshot-hover/main/sss.png";
+
+const normalSrc2 = img2.src;
+const hoverSrc2 = "https://raw.githubusercontent.com/s4255467-lang/Search-2/main/ChatGPT%20Image%20Apr%2027%2C%202026%2C%2007_56_30%20PM.png";
+
+const normalSrc3 = img3.src;
+const hoverSrc3 = normalSrc3;
+
+const normalSrc4 = img4.src;
+const hoverSrc4 = "https://github.com/s4255467-lang/Help-hover/blob/main/ChatGPT%20Image%20Apr%2027%2C%202026%2C%2008_55_30%20PM.png?raw=true";
+
+
+// unlock
+document.body.addEventListener("click", () => {
+  [sound1, sound2, ...randomSounds3, sound4, sound5, sound6, sound7, sound8, sound9].forEach(sound => {
+    sound.play().then(() => {
+      sound.pause();
+      sound.currentTime = 0;
+    }).catch(()=>{});
+  });
+}, { once: true });
+
+
+
+// IMAGE 1
+img.onmouseenter = () => { img.src = hoverSrc; sound1.currentTime=0; sound1.play(); };
+img.onmouseleave = () => { img.src = normalSrc; };
+
+// IMAGE 2
+img2.onmouseenter = () => { img2.src = hoverSrc2; sound2.currentTime=0; sound2.play(); };
+img2.onmouseleave = () => { img2.src = normalSrc2; };
+
+// IMAGE 3
+img3.onmouseenter = () => {
+  img3.src = hoverSrc3;
+  const s = randomSounds3[Math.floor(Math.random()*2)];
+  s.currentTime=0; s.play();
+};
+img3.onmouseleave = () => { img3.src = normalSrc3; };
+
+// IMAGE 4
+img4.onmouseenter = () => {
+  img4.src = hoverSrc4;
+  sound4.currentTime=0;
+  sound4.play();
+};
+img4.onmouseleave = () => { img4.src = normalSrc4; };
+
+// 🔥 IMAGE 5 (ARROW ICON)
+img5.onmouseenter = () => {
+  sound5.currentTime = 0;
+  sound5.play();
+};
+
+// IMAGE 6–9
+// IMAGE 6–9
+img6.onmouseenter = () => {
+  sound6.currentTime = 0;
+  sound6.play();
+};
+
+img7.onmouseenter = () => {
+  sound7.currentTime = 0;
+  sound7.play();
+};
+
+img8.onmouseenter = () => {
+  sound8.currentTime = 0;
+  sound8.play();
+};
+
+img9.onmouseenter = () => {
+  sound9.currentTime = 0;
+  sound9.play();
+};
+
+
+
+</script>
+
+</body>
+</html>
